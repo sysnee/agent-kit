@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sysnee": {
+      "type": "http",
+      "url": "https://mcp.sysnee.com/mcp"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+# Validates the plugin and the Markdown on every push and pull request.
+# Third-party actions are pinned by commit; tools by exact version.
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+
+      - name: Plugin and marketplace
+        run: |
+          npx -y @anthropic-ai/claude-code@2.1.315 plugin validate . --strict
+          npx -y @anthropic-ai/claude-code@2.1.315 plugin validate plugins/sysnee --strict
+
+      - name: No hooks, executables or monitors in the plugin
+        run: |
+          for path in plugins/sysnee/hooks plugins/sysnee/bin plugins/sysnee/monitors plugins/sysnee/scripts; do
+            if [ -e "$path" ]; then echo "::error::$path is not allowed in this plugin"; exit 1; fi
+          done
+          if find plugins -type f -perm -u+x | grep .; then echo "::error::executable files"; exit 1; fi
+
+      - name: Pinned versions match the release
+        run: node scripts/check-pins.mjs
+
+      - name: Markdown
+        run: npx -y markdownlint-cli2@0.24.0 "**/*.md"
+
+      - name: Links
+        run: |
+          find . -name '*.md' -not -path './node_modules/*' -print0 \
+            | xargs -0 -n1 npx -y markdown-link-check@3.15.0 --quiet --config .github/link-check.json
+
+      - name: Secrets
+        run: pipx run semgrep==1.183.0 scan --config p/secrets --error --metrics off

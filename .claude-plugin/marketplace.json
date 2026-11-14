@@ -1,0 +1,14 @@
+{
+  "name": "sysnee",
+  "owner": { "name": "Sysnee", "url": "https://sysnee.com" },
+  "description": "Sysnee Cloud for coding agents: the remote MCP server and skills for static sites and managed PostgreSQL.",
+  "plugins": [
+    {
+      "name": "sysnee",
+      "source": "./plugins/sysnee",
+      "description": "Deploy static sites and manage PostgreSQL on Sysnee Cloud through its MCP server, with skills for frameworks, databases and the sysnee CLI.",
+      "category": "deployment",
+      "keywords": ["sysnee", "deploy", "static-sites", "postgresql", "mcp"]
+    }
+  ]
+}

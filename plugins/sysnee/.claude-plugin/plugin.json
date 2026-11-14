@@ -1,0 +1,20 @@
+{
+  "name": "sysnee",
+  "version": "1.0.0",
+  "description": "Deploy static sites and manage PostgreSQL on Sysnee Cloud through its MCP server, with skills for frameworks, databases and the sysnee CLI.",
+  "author": {
+    "name": "Sysnee",
+    "url": "https://sysnee.com"
+  },
+  "homepage": "https://docs.sysnee.com/agents",
+  "repository": "https://github.com/sysnee/agent-kit",
+  "license": "MIT",
+  "keywords": [
+    "sysnee",
+    "deploy",
+    "static-sites",
+    "postgresql",
+    "mcp"
+  ],
+  "privacyPolicyUrl": "https://cloud.sysnee.com/privacy"
+}

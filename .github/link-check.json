@@ -1,0 +1,9 @@
+{
+  "ignorePatterns": [
+    { "pattern": "^cursor://" },
+    { "pattern": "^https://github.com/sysnee/agent-kit/tree/" },
+    { "pattern": "^https://mcp\\.sysnee\\.com/mcp$" }
+  ],
+  "retryOn429": true,
+  "aliveStatusCodes": [200, 206]
+}
