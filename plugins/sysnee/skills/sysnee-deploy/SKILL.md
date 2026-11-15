@@ -24,7 +24,7 @@ Check `package.json` and the framework config before deploying:
 
 If the app needs a server, say so plainly: Sysnee Sites can host its static part only. Public build-time values can live in a committed file the framework reads (for example `.env.production` with Vite); never put secrets there.
 
-Single-page apps with client-side routing need **SPA mode** (create the site with `spa: true` / `--spa`): unknown paths then serve `index.html` with status 200. Without it, unknown paths serve the site's `404.html`.
+Single-page apps with client-side routing need **SPA mode** (create the site with `spa: true` / `--spa`): unknown paths then serve `index.html` with status 200. Without it, unknown paths serve the site's `404.html`. On an existing site, turn it on with `update_site` (`spa: true`) or `sysnee sites update <site> --spa`; it applies without a new deployment.
 
 ## 2. Deploy
 
@@ -39,7 +39,7 @@ Single-page apps with client-side routing need **SPA mode** (create the site wit
 
 Limits: 100 MB zipped, 500 MB unzipped, 10,000 files, 30 uploads per hour per token.
 
-Sites connected to GitHub or GitLab build on Sysnee on every push; `redeploy_site` rebuilds the branch head. Build settings (root directory, install and build commands, output folder, Node 20/22/24) are changed by the user in the console.
+Sites connected to GitHub or GitLab build on Sysnee on every push; `redeploy_site` rebuilds the branch head. Sysnee detects the framework (Nuxt runs `generate`; Angular's folder comes from `angular.json`). Build settings (root directory, install and build commands, output folder, Node 20/22/24) are changed by the user in the console.
 
 ## 3. When a build fails
 
@@ -60,4 +60,5 @@ Details: https://docs.sysnee.com/sites.md
 ## 5. Roll back and delete
 
 - Roll back with `activate_deployment` on an earlier ready deployment (ask first: it changes what visitors see).
+- Visitor analytics is turned on or off with `update_site` (`analytics`) or `sysnee sites update <site> --analytics` / `--no-analytics`. Ask first.
 - Deleting a site or removing a domain: `request_deletion`, then give the user the `confirm_url`. Nothing is deleted until they confirm in the console.
