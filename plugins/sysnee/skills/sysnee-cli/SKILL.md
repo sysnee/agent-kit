@@ -1,11 +1,11 @@
 ---
 name: sysnee-cli
-description: Use when running the sysnee CLI (@sysnee/cli) from a terminal, script or CI - signing in, deploying a folder, following logs, creating a database into .env, reading JSON output and exit codes (2 = a person must confirm, 3 = sign-in needed).
+description: Use when running the sysnee CLI (@sysnee/cli) from a terminal, script or CI - signing in, deploying a folder or a container app, following logs, creating a database into .env, reading JSON output and exit codes (2 = a person must confirm, 3 = sign-in needed).
 ---
 
 # The `sysnee` CLI
 
-Install the pinned version (Node.js 20+): `npm install -g @sysnee/cli@1.0.0`, or run it with `npx @sysnee/cli@1.0.0 <command>`. Ask before installing globally.
+Install the pinned version (Node.js 20+): `npm install -g @sysnee/cli@1.1.0`, or run it with `npx @sysnee/cli@1.1.0 <command>`. Ask before installing globally.
 
 ## Sign-in
 
@@ -25,6 +25,10 @@ sysnee sites update <site> --spa | --no-spa | --analytics | --no-analytics
 sysnee domains add <site> <hostname>      # prints DNS records for the user
 sysnee domains verify <site> <domain-id>
 sysnee domains remove <site> <hostname>   # exit 2 + confirm_url outside a terminal
+sysnee apps deploy . --app <name>          # zip the compose project, upload, follow build and rollout
+sysnee apps list | info <app> | logs <app> [--service <name>] [--follow]
+sysnee apps env set <app> KEY=value [--service <name>]
+sysnee apps rollback <app> <deployment>
 sysnee db create <name> --dotenv .env     # password goes to .env, never printed
 sysnee db info <database>
 sysnee usage
@@ -46,6 +50,6 @@ Output is JSON when stdout isn't a terminal (or with `--json`); errors are `{"er
 | `2` | A person must confirm; nothing was done | Give the user `confirm_url` and stop |
 | `3` | Not signed in | Ask the user to run `sysnee login` |
 
-Deletions (`sysnee sites delete`, `sysnee domains remove`, `sysnee db delete`) outside a terminal always end with exit 2 and a `confirm_url`. That is the expected result, not a failure to retry.
+Deletions (`sysnee sites delete`, `sysnee apps delete`, `sysnee domains remove`, `sysnee db delete`) outside a terminal always end with exit 2 and a `confirm_url`. That is the expected result, not a failure to retry.
 
 Details: https://docs.sysnee.com/cli.md

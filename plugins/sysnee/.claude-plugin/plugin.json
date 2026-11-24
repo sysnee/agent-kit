@@ -1,7 +1,7 @@
 {
   "name": "sysnee",
-  "version": "1.0.0",
-  "description": "Deploy static sites and manage PostgreSQL on Sysnee Cloud through its MCP server, with skills for frameworks, databases and the sysnee CLI.",
+  "version": "1.1.0",
+  "description": "Deploy static sites and container apps and manage PostgreSQL on Sysnee Cloud through its MCP server, with skills for frameworks, compose apps, databases and the sysnee CLI.",
   "author": {
     "name": "Sysnee",
     "url": "https://sysnee.com"
@@ -13,6 +13,7 @@
     "sysnee",
     "deploy",
     "static-sites",
+    "containers",
     "postgresql",
     "mcp"
   ],

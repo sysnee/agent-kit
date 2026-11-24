@@ -2,11 +2,12 @@
 
 The [Sysnee Cloud](https://sysnee.com) plugin for Claude Code, and the same skills and
 MCP configuration for other coding agents. With it, an agent can deploy static sites
-and manage PostgreSQL databases on your account, within the permissions you approve.
+and container apps and manage PostgreSQL databases on your account, within the permissions you approve.
 
 - **MCP server:** `https://mcp.sysnee.com/mcp` (Streamable HTTP, OAuth in the browser).
 - **Skills:** `plugins/sysnee/skills/`: when to use what, deploying each framework,
-  PostgreSQL without exposing passwords, and the `sysnee` CLI.
+  container apps from a compose file, PostgreSQL without exposing passwords, and the
+  `sysnee` CLI.
 - **Configs:** `configs/` has the setup for Codex, Cursor, VS Code, OpenCode, Devin,
   Gemini CLI and Antigravity.
 
@@ -21,7 +22,7 @@ Read https://docs.sysnee.com/agent-setup/prompt.md and help me set up Sysnee in 
 Or by hand, in Claude Code:
 
 ```bash
-claude plugin marketplace add sysnee/agent-kit#v1.0.0
+claude plugin marketplace add sysnee/agent-kit#v1.1.0
 claude plugin install sysnee@sysnee
 ```
 
@@ -41,11 +42,11 @@ access at any time in **Console → Security → Authorized apps**.
 
 ## Versions
 
-Releases are signed git tags (`v1.0.0`). Install by tag, as above: the marketplace then
+Releases are signed git tags (`v1.1.0`). Install by tag, as above: the marketplace then
 stays on that version until you add a newer tag. Auto-update is off by default for
 third-party marketplaces, and we recommend keeping it off.
 
-Check a tag's signature with `git tag -v v1.0.0`. See [CHANGELOG.md](CHANGELOG.md).
+Check a tag's signature with `git tag -v v1.1.0`. See [CHANGELOG.md](CHANGELOG.md).
 
 ## Security
 

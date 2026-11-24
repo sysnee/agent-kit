@@ -7,7 +7,7 @@
 ```
 
 ```bash
-DO_NOT_TRACK=1 npx -y skills@1.7.4 add https://github.com/sysnee/agent-kit/tree/v1.0.0/plugins/sysnee/skills -a antigravity -y
+DO_NOT_TRACK=1 npx -y skills@1.7.4 add https://github.com/sysnee/agent-kit/tree/v1.1.0/plugins/sysnee/skills -a antigravity -y
 ```
 
 Sign in from **Customizations → Installed → Authenticate**. Docs: https://docs.sysnee.com/en/agents#antigravity
