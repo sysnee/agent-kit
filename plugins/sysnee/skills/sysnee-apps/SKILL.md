@@ -37,7 +37,7 @@ Write state that must survive restarts to a volume: the container's filesystem c
 
 Apps connected to GitHub or GitLab deploy on every push; `redeploy_app` builds the branch head again.
 
-Limits: 100 MB zipped, 1,024 MB unpacked, 10 services, 5 replicas per service, 5 volumes, 20-minute builds, 30 uploads per hour per token.
+Limits: 100 MB zipped, 1,024 MB unpacked, 10 services, 5 replicas per service, 5 volumes, 40-minute builds, 30 uploads per hour per token.
 
 ## 3. Variables, sizes and volumes
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- `sysnee-apps`: app builds can take up to 40 minutes (was 20).
+
 ## v1.1.0 (2026-11-24)
 
 - New skill `sysnee-apps`: container apps from a docker-compose.yml (compose checks, deploy, variables, sizes, volumes, logs, rollback).
